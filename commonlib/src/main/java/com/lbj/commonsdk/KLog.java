@@ -8,7 +8,7 @@ import com.apkfuns.logutils.file.LogFileEngine;
  * Created by luo on 2021/1/22.
  * log manager
  */
-public class Klog {
+public class KLog {
     public static final String TAG = "VMI-LOG";
 
     public static void i(String tag, Object msg) {
