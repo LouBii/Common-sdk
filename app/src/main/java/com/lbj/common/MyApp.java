@@ -2,13 +2,12 @@ package com.lbj.common;
 
 import android.app.Application;
 
-import com.apkfuns.log2file.LogFileEngineFactory;
-import com.lbj.commonsdk.Klog;
+import com.lbj.commonsdk.log.KLog;
 
 /**
  * Created by luo on 2021/1/26.
  */
-class MyApp extends Application {
+public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -17,10 +16,7 @@ class MyApp extends Application {
     }
 
     private void initLog() {
-        Klog.fileEnable(true)
-                .filePath(getExternalFilesDir("log").getAbsolutePath())
-                .fileEngine(new LogFileEngineFactory(this));
-        Klog.config()
-                .configShowBorders(false);
+        KLog.TAG = "VMI-LOG";
+        KLog.fileEnable(true).fileShowStack(true);
     }
 }
