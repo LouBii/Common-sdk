@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -32,9 +32,9 @@ publish {
     userOrg = 'luobijun'//bintray.com用户名
     groupId = 'com.lbj'//jcenter上的路径
     artifactId = 'commonsdk'//项目名称
-    publishVersion = '1.0.0'//版本号
+    publishVersion = '1.0.3'//版本号
     desc = 'some android common sdk set'//库的描述，不重要
-    website = 'https://github.com/LiZachary/lgzUtils'//网站，最好有，不重要
+    website = 'https://github.com/LouBii/Common-sdk'//网站，最好有，不重要
 }
 
 
@@ -43,8 +43,9 @@ dependencies {
 //    implementation 'androidx.appcompat:appcompat:1.2.0'
 //    implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    api 'com.apkfuns.logutils:library:1.7.5'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+//    api 'com.apkfuns.logutils:library:1.7.5'
     api 'com.apkfuns.log2file:log2file:1.3.1'
+    api 'com.android.support:support-annotations:28.0.0'
 }

@@ -97,7 +97,11 @@ class Logger implements Printer {
                     printLog(TYPE_ERROR, tag, Log.getStackTraceString(e));
                 }
             }
-            writeToFile(tag, msg, type);
+            if (log2FileConfig.isShowStack()) {
+                writeToFile(tag, getTopStackInfo() + ": " + msg, type);
+            } else {
+                writeToFile(tag, msg, type);
+            }
         }
         // 不启用日志
         if (!mLogConfig.isEnable() || type < mLogConfig.getLogLevel()) {

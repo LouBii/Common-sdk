@@ -4,11 +4,10 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.apkfuns.log2file.LogFileEngineFactory;
+import com.lbj.commonsdk.log.KLog;
 
 /**
  * Created by luo on 2021/1/27.
@@ -17,12 +16,16 @@ import com.apkfuns.log2file.LogFileEngineFactory;
 public class LifecycleProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
+        initLog();
+        return true;
+    }
+
+    private void initLog() {
         KLog.fileEnable(false)
                 .filePath(getContext().getExternalFilesDir("log").getAbsolutePath())
                 .fileEngine(new LogFileEngineFactory(getContext()));
         KLog.config()
                 .configShowBorders(false);
-        return true;
     }
 
     @Nullable

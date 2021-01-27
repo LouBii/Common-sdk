@@ -23,6 +23,7 @@ class Log2FileConfigImpl implements Log2FileConfig {
     private LogFileFilter fileFilter;
     private @LogLevelType int logLevel = LogLevel.TYPE_VERBOSE;
     private boolean enable = false;
+    private boolean isShowStack = false;
     private String logFormatName = DEFAULT_LOG_NAME_FORMAT;
     private String logPath;
     private static Log2FileConfigImpl singleton;
@@ -47,6 +48,16 @@ class Log2FileConfigImpl implements Log2FileConfig {
 
     boolean isEnable() {
         return enable;
+    }
+
+    @Override
+    public Log2FileConfig configLog2FileShowStack(boolean isShowStack) {
+        this.isShowStack = isShowStack;
+        return this;
+    }
+
+    public boolean isShowStack() {
+        return isShowStack;
     }
 
     @Override

@@ -12,6 +12,8 @@ import java.io.File;
 public interface Log2FileConfig {
     Log2FileConfig configLog2FileEnable(boolean enable);
 
+    Log2FileConfig configLog2FileShowStack(boolean isShowStack);
+
     Log2FileConfig configLog2FilePath(String logPath);
 
     Log2FileConfig configLog2FileNameFormat(String formatName);

@@ -1,4 +1,4 @@
-package com.lbj.commonsdk;
+package com.lbj.commonsdk.log;
 
 import com.apkfuns.logutils.LogConfig;
 import com.apkfuns.logutils.LogUtils;
@@ -65,6 +65,14 @@ public class KLog {
         wtf(TAG, msg);
     }
 
+    public static void json(String msg) {
+        LogUtils.json(msg);
+    }
+
+    public static void xml(String msg) {
+        LogUtils.xml(msg);
+    }
+
     /**
      * resetStackTrace
      * see -> Logger#getCurrentStackTrace()
@@ -75,6 +83,7 @@ public class KLog {
 
     /**
      * is enable save to disk
+     * the default file path is -> getExternalFilesDir("log").getAbsolutePath()
      */
     public static LogFileConfig fileEnable(boolean fileEnable) {
         // targetSdkVersion >= 23, need file permission
@@ -112,6 +121,15 @@ public class KLog {
 
         public LogFileConfig fileEnable(boolean fileEnable) {
             LogUtils.getLog2FileConfig().configLog2FileEnable(fileEnable);
+            return this;
+        }
+
+        /**
+         * is write to file with stack info,
+         * be careful,if enabled it will affect performance
+         */
+        public LogFileConfig fileShowStack(boolean isShowStack) {
+            LogUtils.getLog2FileConfig().configLog2FileShowStack(isShowStack);
             return this;
         }
 
