@@ -9,7 +9,7 @@ import com.apkfuns.logutils.file.LogFileEngine;
  * log manager
  */
 public class KLog {
-    public static final String TAG = "KLog";
+    public static String TAG = "KLog";
 
     public static void i(String tag, Object msg) {
         resetStackTrace(tag);
