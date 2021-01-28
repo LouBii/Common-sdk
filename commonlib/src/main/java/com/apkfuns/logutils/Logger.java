@@ -6,6 +6,7 @@ import android.util.Log;
 import com.apkfuns.logutils.file.LogFileParam;
 import com.apkfuns.logutils.parser.LocalParserManager;
 import com.apkfuns.logutils.utils.ObjectUtil;
+import com.lbj.commonsdk.log.KLog;
 
 import static com.apkfuns.logutils.LogLevel.*;
 import static com.apkfuns.logutils.utils.Utils.*;
@@ -174,11 +175,14 @@ class Logger implements Printer {
      */
     private StackTraceElement getCurrentStackTrace() {
         StackTraceElement[] trace = Thread.currentThread().getStackTrace();
-        int stackOffset = getStackOffset(trace, LogUtils.class);
+        int stackOffset = getStackOffset(trace, KLog.class);
         if (stackOffset == -1) {
-            stackOffset = getStackOffset(trace, Logger.class);
+            stackOffset = getStackOffset(trace, LogUtils.class);
             if (stackOffset == -1) {
-                return null;
+                stackOffset = getStackOffset(trace, Logger.class);
+                if (stackOffset == -1) {
+                    return null;
+                }
             }
         }
         if (mLogConfig.getMethodOffset() > 0) {

@@ -13,39 +13,70 @@ import com.apkfuns.logutils.file.LogFileEngine;
 public class KLog {
     public static String TAG = "KLog";
 
-    public static void i(String tag, Object msg) {
-        resetStackTrace(tag);
+    public static void i(String tag, Object msg, Throwable tr) {
         LogUtils.tag(tag).i(msg);
+        if (tr != null) {
+            Log.i(tag, "", tr);
+        }
     }
 
-    public static void v(String tag, Object msg) {
-        resetStackTrace(tag);
-        LogUtils.tag(tag).v(msg);
-    }
-
-    public static void d(String tag, Object msg) {
-        resetStackTrace(tag);
+    public static void d(String tag, Object msg, Throwable tr) {
         LogUtils.tag(tag).d(msg);
+        if (tr != null) {
+            Log.d(tag, "", tr);
+        }
     }
 
-    public static void w(String tag, Object msg) {
-        resetStackTrace(tag);
+    public static void v(String tag, Object msg, Throwable tr) {
+        LogUtils.tag(tag).v(msg);
+        if (tr != null) {
+            Log.v(tag, "", tr);
+        }
+    }
+
+    public static void w(String tag, Object msg, Throwable tr) {
         LogUtils.tag(tag).w(msg);
-    }
-
-    public static void e(String tag, Object msg) {
-        resetStackTrace(tag);
-        LogUtils.tag(tag).e(msg);
+        if (tr != null) {
+            Log.w(tag, "", tr);
+        }
     }
 
     public static void e(String tag, Object msg, Throwable tr) {
-        resetStackTrace(tag);
         LogUtils.tag(tag).e(msg);
-        Log.e(tag, "", tr);
+        if (tr != null) {
+            Log.e(tag, "", tr);
+        }
+    }
+
+    public static void wtf(String tag, Object msg, Throwable tr) {
+        LogUtils.tag(tag).wtf(msg);
+        if (tr != null) {
+            Log.wtf(tag, "", tr);
+        }
+    }
+
+
+    public static void i(String tag, Object msg) {
+        i(tag, msg, null);
+    }
+
+    public static void v(String tag, Object msg) {
+        v(tag, msg, null);
+    }
+
+    public static void d(String tag, Object msg) {
+        d(tag, msg, null);
+    }
+
+    public static void w(String tag, Object msg) {
+        w(tag, msg, null);
+    }
+
+    public static void e(String tag, Object msg) {
+        e(tag, msg, null);
     }
 
     public static void wtf(String tag, Object msg) {
-        resetStackTrace(tag);
         LogUtils.tag(tag).wtf(msg);
     }
 
@@ -79,14 +110,6 @@ public class KLog {
 
     public static void xml(String msg) {
         LogUtils.xml(msg);
-    }
-
-    /**
-     * resetStackTrace
-     * see -> Logger#getCurrentStackTrace()
-     */
-    private static void resetStackTrace(String tag) {
-        config().configMethodOffset(tag.equals(TAG) ? 2 : 1);
     }
 
     /**
