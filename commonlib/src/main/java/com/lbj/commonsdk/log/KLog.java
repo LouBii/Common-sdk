@@ -1,5 +1,7 @@
 package com.lbj.commonsdk.log;
 
+import android.util.Log;
+
 import com.apkfuns.logutils.LogConfig;
 import com.apkfuns.logutils.LogUtils;
 import com.apkfuns.logutils.file.LogFileEngine;
@@ -34,6 +36,12 @@ public class KLog {
     public static void e(String tag, Object msg) {
         resetStackTrace(tag);
         LogUtils.tag(tag).e(msg);
+    }
+
+    public static void e(String tag, Object msg, Throwable tr) {
+        resetStackTrace(tag);
+        LogUtils.tag(tag).e(msg);
+        Log.e(tag, "", tr);
     }
 
     public static void wtf(String tag, Object msg) {
