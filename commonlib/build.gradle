@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 7
+        versionName "1.0.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -32,7 +32,7 @@ publish {
     userOrg = 'luobijun'//bintray.com用户名
     groupId = 'com.lbj'//jcenter上的路径
     artifactId = 'commonsdk'//项目名称
-    publishVersion = '1.0.3'//版本号
+    publishVersion = '1.0.7'//版本号
     desc = 'some android common sdk set'//库的描述，不重要
     website = 'https://github.com/LouBii/Common-sdk'//网站，最好有，不重要
 }
